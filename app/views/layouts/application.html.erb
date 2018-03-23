@@ -8,18 +8,24 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <nav>
-<div>EazyRecipe</div>
+<div><%=link_to "EazyRecipe", root_path%></div>
 <div>
-  <% if session.each == nil %>
-  <%= button_to "Sign Up", new_user_path, method: :get %>
-  <%= button_to "Login", sign_in_url, method: :get%>
+  <% if logged_in? %>
+  <%= link_to "Logout", sign_out_path, class: "btn btn-primary"%>
   <%else%>
-  <%= button_to "Logout", sign_out_url, method: :get%>
+  <%= link_to "Sign Up", sign_up_path, class: "btn btn-primary" %>
+  <%= link_to "Login", sign_in_path, class: "btn btn-primary" %>
   <%end%>
-  <%#end%>
+
 </div>
 </nav>
   <body>
+  <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
     <%= yield %>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   </body>
 </html>

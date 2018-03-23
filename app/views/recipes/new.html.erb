@@ -1,7 +1,10 @@
 <h1><u>New Recipe</u></h1>
 
-<%= form_for @recipe, url: new_recipe_path do |form| %>
-  <%= render partial: "/recipe/form", object: form %>
+<%= form_for @recipe do |form| %>
+  <%= render partial: "/recipes/form", object: form %>
+
+
+
 
 <div>
   <%= form.submit "Save", data: { confirm: "Save Recipe?" }%>

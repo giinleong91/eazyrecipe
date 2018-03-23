@@ -1,0 +1,15 @@
+<h1>Welcome to EazyRecipe</h1>
+<div>
+<%= link_to "Create New Recipe", new_recipe_path%>
+</div>
+<% @recipe.each_slice(3) do |recipes|%>
+<% recipes.each do |recipe|%>
+<div class="row">
+<div class="col-md-4">
+<span>Title: <%= link_to recipe.title, recipe_path(recipe) %></span>
+<p>Description: <%= recipe.description %></p>
+<span>By: <%= recipe.user.first_name %></span>
+</div>
+<%end%>
+<%end%>
+</div>

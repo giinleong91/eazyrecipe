@@ -1,0 +1,19 @@
+<p>Title: <%= @recipe.title %></p> 
+<p>Description: <%= @recipe.description %></p> 
+<p>Video: <%= @recipe.video %></p> 
+<p>By: <%= @recipe.user.first_name %></p>
+<p>Ingredient:
+<p>
+<%= @ingredient.name %> 
+<span><%= @ingredient.amount %></span> 
+</p>
+<p>Direction:
+<p>
+  <%= @direction.step %>
+</p></p>
+</p>
+<div>
+<%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>
+<%= link_to "Delete", recipe_path, method: :delete, data:{confirm:"Are you sure?"}, class: "btn btn-default"%>
+<%= link_to "Back", root_path, class: "btn btn-default" %>
+</div>

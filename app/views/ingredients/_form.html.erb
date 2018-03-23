@@ -1,0 +1,5 @@
+<div class="nested-fields">
+<span>Name: <%= f.text_field :name %></span>
+<span>Amount: <%= f.select :amount, options_for_select((0..10)), :class => 'genForm_dropBox'%></span>
+<span><%= link_to_remove_association "-", f, class: "btn btn-default" %></span>
+</div>
