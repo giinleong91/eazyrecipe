@@ -1,0 +1,9 @@
+<h1><u>Change Recipe?</u></h1>
+
+<%= form_for @recipe do |form|%>
+  <%= render partial: "/recipe/form" %>
+
+<div>
+  <%= form.submit "Update", data{confirm: "Change Recipe?"}%>
+</div>
+<%end%>

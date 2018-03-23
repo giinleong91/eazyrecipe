@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eazyrecipe</title>
+    <title>EazyRecipe</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <nav>
+<div>EazyRecipe</div>
+<div>
+  <% if session.each == nil %>
+  <%= button_to "Sign Up", new_user_path, method: :get %>
+  <%= button_to "Login", sign_in_url, method: :get%>
+  <%else%>
+  <%= button_to "Logout", sign_out_url, method: :get%>
+  <%end%>
+  <%#end%>
+</div>
+</nav>
   <body>
     <%= yield %>
   </body>

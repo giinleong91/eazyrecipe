@@ -1,0 +1,5 @@
+<div class="nested-fields">
+Name: <%= form.text_field :name %>
+No.: <%= form.select(:amount, [0..20])%>
+<%= link_to_remove_association "-", form %>
+</div>

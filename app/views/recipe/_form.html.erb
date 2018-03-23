@@ -1,0 +1,16 @@
+<p>Title: <%= form.text_field :title %></p>
+<p>Image: </p>
+<p>Description: <%= form.text_field :description %></p>
+<p>Ingredient:</p>
+<p><%= form.fields_for :ingredients do |ingredient| %>
+    <%= render 'ingredient/form', form:ingredient  %>
+   <%end%>
+<%= link_to_add_association '+', form, :ingredients, partial: "ingredient/form" %>
+</p>
+<p>Direction:</p>
+<p><%= form.fields_for :directions do |direction| %>
+    <%= render "direction/form", form:direction  %>
+  <%end%>
+<%#= link_to_add_association "+ directions", form, :directions, render partial: "direction/form" %>
+</p>
+<p>Video: <%= form.text_field :video %></p>
