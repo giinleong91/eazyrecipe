@@ -23,5 +23,10 @@
 <%end%>
 </table>
 
-<p><%= link_to "Create fridge", new_user_fridge_path(@user)%></p>
+<p><%= form_for ([@user, @user.fridges.build]) do |form|%>
+    <%= render partial: "fridges/form", object: form%>
+      <%#= link_to_add_association '+', form, :fridge, partial: "fridges/form", class: "btn btn-default add-button"%>
+    <%= form.submit "+"%>
+  </div>
+  <%end%></p>
 </div>
