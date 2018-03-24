@@ -4,13 +4,19 @@
 <p>By: <%= @recipe.user.first_name %></p>
 <p>Ingredient:
 <p>
-<%= @ingredient.name %> 
-<span><%= @ingredient.amount %></span> 
+<% @ingredient.each do |ingredient|%>
+<%= ingredient.name %> 
+<span><%= ingredient.amount %></span> 
 </p>
+<%end%>
 <p>Direction:
 <p>
-  <%= @direction.step %>
-</p></p>
+<% @direction.each_with_index do |direction, index|%>
+  <%= index + 1%>.
+  <%= direction.step %>
+</p>
+  <%end%>
+</p>
 </p>
 <div>
 <%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>

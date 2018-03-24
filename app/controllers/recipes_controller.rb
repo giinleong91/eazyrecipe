@@ -28,8 +28,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @ingredient = Ingredient.find_by(recipe_id: @recipe.id)
-    @direction = Direction.find_by(recipe_id: @recipe.id)
+    @ingredient = Ingredient.where(recipe_id: @recipe.id)
+    @direction = Direction.where(recipe_id: @recipe.id)
   end
 
   def edit
