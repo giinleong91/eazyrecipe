@@ -1,0 +1,8 @@
+<div><%= "#{@user.first_name}'s List"%></div> 
+  <div>
+  <%= form_for ([@user, @user.fridges.build]) do |form|%>
+    <%= render partial: "fridges/form", object: form%>
+      <%#= link_to_add_association '+', form, :fridge, partial: "fridges/form", class: "btn btn-default add-button"%>
+    <%= form.submit "+"%>
+  </div>
+  <%end%>

@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipe = Recipe.all
+    @user = User.find(session[:user_id])
   end
 
   def new
@@ -14,9 +15,6 @@ class RecipesController < ApplicationController
   def create
     user = User.find(session[:user_id])
     @recipe = user.recipes.build(recipe_params)
-    # @recipe.ingredients.build
-    # @recipe.directions.build
-    # set_association(@ingredient, @direction)
     build_association(@recipe)
     if @recipe.save!
       flash[:notice] = "Congratulation, your recipe has been saved!"

@@ -7,18 +7,26 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <nav>
-<div><%=link_to "EazyRecipe", root_path%></div>
-<div>
-  <% if logged_in? %>
-  <%= link_to "Logout", sign_out_path, class: "btn btn-primary"%>
-  <%else%>
-  <%= link_to "Sign Up", sign_up_path, class: "btn btn-primary" %>
-  <%= link_to "Login", sign_in_path, class: "btn btn-primary" %>
-  <%end%>
 
-</div>
+
+<nav class="navbar navbar-default">
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <%= link_to "EazyRecipe", root_path, class: "navbar-brand"%>
+  <div class="navbar-text navbar-right">
+      <% if logged_in? %>
+      <span class="btn btn-default"><%= link_to "Signed in as #{@user.first_name}", user_path(@user) %></span>
+      <%= link_to "Logout", sign_out_path, class: "btn btn-primary"%>
+      <%else%>
+      <%= link_to "Sign Up", sign_up_path, class: "btn btn-primary" %>
+      <%= link_to "Login", sign_in_path, class: "btn btn-primary" %>
+      </div>
+      <%end%>
+  </div>
 </nav>
+</nav>
+
+
   <body>
   <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
@@ -28,4 +36,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   </body>
+  <footer>
+  </footer>
 </html>

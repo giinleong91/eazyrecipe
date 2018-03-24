@@ -1,8 +1,9 @@
 class User < ApplicationRecord
 has_secure_password
 has_many :recipes
-has_one :ingredient
+has_many :fridges
 
+accepts_nested_attributes_for :fridges, reject_if: :all_blank, allow_destroy: true
 # validates :first_name, presence: true
 # validates :last_name, presence: true
 # validates :email, presence: true
