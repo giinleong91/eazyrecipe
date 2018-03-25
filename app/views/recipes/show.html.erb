@@ -19,7 +19,12 @@
 </p>
 </p>
 <div>
+<%if @recipe.user == current_user %>
 <%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>
 <%= link_to "Delete", recipe_path, method: :delete, data:{confirm:"Are you sure?"}, class: "btn btn-default"%>
+<%end%>
 <%= link_to "Back", root_path, class: "btn btn-default" %>
 </div>
+
+
+<%= render partial: "/fridges/show" %>

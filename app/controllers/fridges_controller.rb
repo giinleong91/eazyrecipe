@@ -1,9 +1,9 @@
 class FridgesController < ApplicationController
-before_action :find_user, only:[:index, :new, :create, :show, :edit, :update, :destroy]
-before_action :set_fridge, only:[:show, :edit, :update, :destroy]
+before_action :find_user, only:[:index, :new, :create, :edit, :update, :destroy]
+before_action :set_fridge, only:[:edit, :update, :destroy]
 
 def index
-  @fridge = Fridge.all
+   @fridge = Fridge.where(user_id: current_user)
 end
 
 def new
@@ -20,16 +20,8 @@ def create
   end
 end
 
-# def show
-
-# end
-
-def edit
-  
-end
-
-def update
-  
+def show
+  @fridge = Fridge.where(user_id: current_user)
 end
 
 def destroy

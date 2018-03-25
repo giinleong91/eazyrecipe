@@ -1,10 +1,10 @@
-<p>Name: <%= @user.first_name + " " + @user.last_name%></p> 
-<p>Email: <%= @user.email %></p> 
-
 <div>
-<!-- create new fridge list -->
-  <div><strong><u>My Grocery List:</u></strong></div>
-  <h1>ABC</h1>
+<div>
+<div><strong><u>My Grocery List:</u></strong></div>
+
+  <% if @fridge.empty? %>
+    Please add ingredient to your list.
+  <%else%>
   <table>
   <thead>
   <th>NO.</th>
@@ -18,16 +18,17 @@
   <td><%= fridge.name %></td>
   <td><%= fridge.amount %></td>
   <td><%#= fridge.done %></td>
-  <td><%= link_to "-", user_fridge_path(@user,fridge.id), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-default"%>
+  <td><%= link_to "-", user_fridge_path(current_user,fridge.id), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-default"%>
   </td>
 </tbody>
 <%end%>
 </table>
-
-<p><%= form_for ([@user, @user.fridges.build]) do |form|%>
+    
+  </div>
+  <%end%>
+<p><%= form_for ([current_user, current_user.fridges.build]) do |form|%>
     <%= render partial: "fridges/form", object: form%>
       <%#= link_to_add_association '+', form, :fridge, partial: "fridges/form", class: "btn btn-default add-button"%>
-    <%= form.submit "+"%>
-  </div>
+    <%= form.submit "+", method: :get%>
   <%end%></p>
 </div>

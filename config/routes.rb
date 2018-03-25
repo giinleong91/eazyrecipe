@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :direction
   end
 
+  post "/search" => "recipes#search"
+
   resources :sessions
 
   get "/sign_up" => "users#new"

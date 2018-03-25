@@ -1,0 +1,15 @@
+<div class="search-form">
+    <%= form_tag search_path do %>
+      <%= label_tag "search" %>
+      <%= text_field_tag "search", nil, list: "list", placeholder: "Search again?"%>
+      <datalist id="list"></datalist>
+    <%end%>
+</div>
+Search result: <%= "#{params[:search]}"%>
+<div><% @result.each do |recipe|%>
+<p><%= recipe.id %></p> 
+<p><%= recipe.title %></p>  
+<p><%= recipe.description %></p> 
+<%#= recipe.video %>
+<%end%>
+</div> 

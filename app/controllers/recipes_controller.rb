@@ -1,9 +1,11 @@
 class RecipesController < ApplicationController
   before_action :find_recipe, only:[:show, :edit, :update, :destroy]
+  # before_action :require_user, expect: [:index, :show]
 
   def index
     @recipe = Recipe.all
-    @user = User.find(session[:user_id])
+    @user = current_user
+    @fridge = Fridge.where(user_id: current_user)
   end
 
   def new
@@ -28,6 +30,7 @@ class RecipesController < ApplicationController
   def show
     @ingredient = Ingredient.where(recipe_id: @recipe.id)
     @direction = Direction.where(recipe_id: @recipe.id)
+    @fridge = Fridge.where(user_id: current_user)
   end
 
   def edit
@@ -47,6 +50,16 @@ class RecipesController < ApplicationController
     flash[:notice] = "Successfully deleted!"
     redirect_to root_path
   end
+
+  def search
+    @result = Recipe.search(params[:search])
+        respond_to do |format|
+          format.json { render json: @recipe }
+          format.html { render "recipes/search"}
+          format.js 
+    end
+  end
+
 
 private
 
