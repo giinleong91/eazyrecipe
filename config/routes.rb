@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
   resources :users do 
-    resources :ingredient
+    resources :fridges do
+      member do 
+        patch :done
+      end
+    end
   end
 
   resources :recipes do 
@@ -10,7 +15,9 @@ Rails.application.routes.draw do
     resources :direction
   end
 
-    resources :sessions
+  post "/search" => "recipes#search"
+
+  resources :sessions
 
   get "/sign_up" => "users#new"
   get "/sign_in" => "sessions#new"

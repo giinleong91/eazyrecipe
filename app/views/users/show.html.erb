@@ -1,0 +1,33 @@
+<p>Name: <%= @user.first_name + " " + @user.last_name%></p> 
+<p>Email: <%= @user.email %></p> 
+
+<div>
+<!-- create new fridge list -->
+  <div><strong><u>My Grocery List:</u></strong></div>
+  <table>
+  <thead>
+  <th>NO.</th>
+  <th>Name</th>
+  <th>Amount</th>
+  <th>Finished?</th>
+  </thead>
+  <% @fridge.each_with_index do |fridge, index|%>
+  <tbody>
+  <td><%= index + 1%></td>
+  <td><%= fridge.name %></td>
+  <td><%= fridge.amount %></td>
+  <td><%#= fridge.done %></td>
+  <td><%= link_to "-", user_fridge_path(@user,fridge.id), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-default"%>
+  </td>
+</tbody>
+<%end%>
+</table>
+
+
+<p><%= form_for ([@user, @user.fridges.build]) do |form|%>
+    <%= render partial: "fridges/form", object: form%>
+      <%#= link_to_add_association '+', form, :fridge, partial: "fridges/form", class: "btn btn-default add-button"%>
+    <%= form.submit "+"%>
+  </div>
+  <%end%></p>
+</div>

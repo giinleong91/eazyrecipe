@@ -8,17 +8,22 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+     log_in user
+      params[:remember_me] == '1' ? remember(user) : forget(user)
       flash[:notice] = "Successfully login"
       redirect_to root_path
     else
       flash[:notice] = "Bad email or password!"
-      render :new
+      redirect_to sign_in_path
     end
   end
 
   def destroy
-    session[:user_id] = nil
+    if logged_in?
+    forget(current_user)
+    session.delete(:user_id)
+    @current_user = nil
+    end
     flash[:notice] = "Successfully log out!"
     redirect_to root_path
   end

@@ -15,3 +15,47 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.container-fluid{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.search-form{
+  text-align: center;
+  background-color: skyblue;
+  padding: 10px 20px;
+  margin: 0 50px;
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+.show-list{
+  clear: left;
+  float: left;
+}
+
+.list{
+  display: none;
+  clear: left;
+  width: 30%;
+}
+
+.show-recipe{
+  float: right;
+  clear: right;
+  width: 60%;
+}
+
+.list-index{
+  background-color: blanchedalmond;
+  position: absolute;
+  z-index: 10;
+}
