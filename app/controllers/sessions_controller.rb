@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
-     log_in user
+     log_in ?user
       params[:remember_me] == '1' ? remember(user) : forget(user)
       flash[:notice] = "Successfully login"
       redirect_to root_path

@@ -37,6 +37,11 @@
   }
 }
 
+.col-md-4 {
+    width: 33.3333333333%;
+    padding: 10px 50px;
+}
+
 .show-list{
   clear: left;
   float: left;
@@ -45,7 +50,7 @@
 .list{
   display: none;
   clear: left;
-  width: 30%;
+  width: 50%;
 }
 
 .show-recipe{
