@@ -26,7 +26,7 @@ end
 
 def destroy
   if @fridge.delete
-    flash[:notice] = "Item destroy!"
+  flash[:notice] = "Item destroy!"
   redirect_to @user
   else
     flash[:notice] = "Error deleting item."

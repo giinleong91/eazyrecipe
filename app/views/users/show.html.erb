@@ -4,7 +4,6 @@
 <div>
 <!-- create new fridge list -->
   <div><strong><u>My Grocery List:</u></strong></div>
-  <h1>ABC</h1>
   <table>
   <thead>
   <th>NO.</th>
@@ -23,6 +22,7 @@
 </tbody>
 <%end%>
 </table>
+
 
 <p><%= form_for ([@user, @user.fridges.build]) do |form|%>
     <%= render partial: "fridges/form", object: form%>

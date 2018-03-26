@@ -12,8 +12,7 @@ has_secure_password
 accepts_nested_attributes_for :fridges, reject_if: :all_blank, allow_destroy: true
 
 def self.digest(string)
-  cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : 
-                                                BCrypt::Engine.cost
+  cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
   BCrypt::Password.create(string, cost: cost)
 end
 

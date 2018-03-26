@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   # before_action :require_user, expect: [:index, :show]
 
   def index
-    @recipe = Recipe.all
+    @recipe = Recipe.all.order("created_at DESC")
     @user = current_user
     @fridge = Fridge.where(user_id: current_user)
   end
@@ -68,7 +68,7 @@ private
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :user_id, :video, ingredients_attributes: [:id, :name, :amount, :recipe_id, :user_id, :_destroy], directions_attributes: [:id, :step, :recipe_id, :user_id, :_destroy])
+    params.require(:recipe).permit(:title, :description, :user_id, :video, :image, ingredients_attributes: [:id, :name, :amount, :recipe_id, :user_id, :_destroy], directions_attributes: [:id, :step, :recipe_id, :user_id, :_destroy])
   end 
 
   def build_association(recipe)

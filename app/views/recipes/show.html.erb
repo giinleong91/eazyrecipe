@@ -1,6 +1,16 @@
+<div class="show-list">
+<button id="show-list">Show list</button>
+<div class="list">
+<%= render partial: "/fridges/show" %>
+</div>
+</div>
+
+<div class="show-recipe">
+<p><%= image_tag(@recipe.image_url.to_s) %></p>
 <p>Title: <%= @recipe.title %></p> 
 <p>Description: <%= @recipe.description %></p> 
-<p>Video: <%= @recipe.video %></p> 
+
+<p><iframe src='https://www.youtube.com/embed/<%= @recipe.video %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe></p> 
 <p>By: <%= @recipe.user.first_name %></p>
 <p>Ingredient:
 <p>
@@ -12,12 +22,29 @@
 <p>Direction:
 <p>
 <% @direction.each_with_index do |direction, index|%>
-  <%= index + 1%>.
+  <%= index + 1%>
   <%= direction.step %>
 </p>
   <%end%>
 </p>
 </p>
+<div id="map" style="width: 50%; height: 200px; background-color: grey;"></div>
+<script>
+      function initMap() {
+        var uluru = {lat: 3.1390, lng: 101.6869};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+  </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&callback=initMap">
+    </script>
 <div>
 <%if @recipe.user == current_user %>
 <%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>
@@ -25,6 +52,4 @@
 <%end%>
 <%= link_to "Back", root_path, class: "btn btn-default" %>
 </div>
-
-
-<%= render partial: "/fridges/show" %>
+</div>
