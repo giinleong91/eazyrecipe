@@ -1,0 +1,23 @@
+<p>Title: <%= form.text_field :title %></p>
+<p>Image: </p>
+<p>Description: <%= form.text_field :description %></p>
+<p>Video: <%= form.text_field :video %></p>
+<p>Ingredient:</p>
+<div class="ingredients">
+    <%= form.fields_for :ingredients do |ingredient| %>
+          <%= render "ingredients/form", f: ingredient %>
+        <% end %>
+    <div class="links">
+    <%= link_to_add_association '+', form, :ingredients, partial: "ingredients/form", class: "btn btn-default add-button"%>
+    </div>
+</div>
+</p>
+<p>Direction:</p>
+<p>
+  <%= form.fields_for :directions do |direction| %>
+    <%= render "directions/form", f: direction  %>
+  <%end%>
+    <div class="links">
+    <%= link_to_add_association '+', form, :directions, partial: "directions/form", class: "btn btn-default add-button" %>
+    </div>
+</p>

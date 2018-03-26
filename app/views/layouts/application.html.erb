@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eazyrecipe</title>
+    <title>EazyRecipe</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <nav>
+<div><%=link_to "EazyRecipe", root_path%></div>
+<div>
+  <% if logged_in? %>
+  <%= link_to "Logout", sign_out_path, class: "btn btn-primary"%>
+  <%else%>
+  <%= link_to "Sign Up", sign_up_path, class: "btn btn-primary" %>
+  <%= link_to "Login", sign_in_path, class: "btn btn-primary" %>
+  <%end%>
 
+</div>
+</nav>
   <body>
+  <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
     <%= yield %>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   </body>
 </html>
