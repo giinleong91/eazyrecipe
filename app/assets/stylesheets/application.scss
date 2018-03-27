@@ -28,6 +28,10 @@
   margin: 0 50px;
 }
 
+#search{
+  width: 400px;
+}
+
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
@@ -50,17 +54,17 @@
 .list{
   display: none;
   clear: left;
-  width: 50%;
+  background-color: aliceblue;
+  position: absolute;
+  z-index: 10;
+  width: 260px;
+  #fridge_name{
+    width: 150px;
+  }
 }
 
 .show-recipe{
   float: right;
   clear: right;
   width: 60%;
-}
-
-.list-index{
-  background-color: blanchedalmond;
-  position: absolute;
-  z-index: 10;
 }
