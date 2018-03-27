@@ -20,12 +20,6 @@ class UsersController < ApplicationController
 
   def show
    @fridge = Fridge.where(user_id: current_user)
-    # @user.fridge.build
-  # if @fridge.save
-  #   redirect_to @fridge
-  # else
-  #   redirect_to @user
-  # end
   end
 
   def edit

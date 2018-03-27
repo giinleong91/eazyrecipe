@@ -57,7 +57,7 @@ class RecipesController < ApplicationController
           format.json { render json: @recipe }
           format.html { render "recipes/search"}
           format.js 
-    end
+    end 
   end
 
 
